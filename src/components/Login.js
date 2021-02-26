@@ -39,7 +39,7 @@ const Login = () => {
           Password:
           <input type='password' name='password' value={creds.password} onChange={handleChange} />
         </label>
-        <button onClick={handleSubmit}>Submit</button>
+        <button onClick={handleSubmit}>Login</button>
       </form>
     </div>
   );
