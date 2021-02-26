@@ -9,8 +9,11 @@ test("Renders BubblePage without errors", () => {
 test("Fetches data and renders the bubbles on mounting", async () => {
   render(<BubblePage/>);
 
-  const colors = screen.findByText(/blue/i);
-  expect(colors).toBeInTheDocument;
+  const blue = await screen.findByText(/blue/i);
+  expect(blue).toBeInTheDocument;
+
+  const firstColor = screen.findByTestId(/asdfalkr/i);
+  expect(firstColor).toBeInTheDocument;
 });
 
 //Task List

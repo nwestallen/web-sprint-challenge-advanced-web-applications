@@ -26,7 +26,6 @@ const ColorList = ({ colors, updateColors }) => {
 
   const deleteColor = color => {
     updateColors(colors.filter(itm => itm !== color));
-    console.log(colors);
   };
 
   return (
