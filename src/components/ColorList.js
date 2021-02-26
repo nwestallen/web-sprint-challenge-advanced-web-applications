@@ -10,18 +10,23 @@ const initialColor = {
 const ColorList = ({ colors, updateColors }) => {
   const [editing, setEditing] = useState(false);
   const [colorToEdit, setColorToEdit] = useState(initialColor);
+  const [editedColor, setEditedColor] = useState(initialColor);
 
   const editColor = color => {
     setEditing(true);
     setColorToEdit(color);
+    setEditedColor(color);
   };
 
   const saveEdit = e => {
     e.preventDefault();
-
+    updateColors(colors.map(color => color === editedColor ? colorToEdit : color));
+    setEditing(false);
   };
 
   const deleteColor = color => {
+    updateColors(colors.filter(itm => itm !== color));
+    console.log(colors);
   };
 
   return (
