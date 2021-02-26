@@ -8,6 +8,7 @@ const Login = () => {
 
   const [creds, setCreds] = useState({ username: '', password: ''});
   const history = useHistory();
+  const [badLogin, setBadLogin] = useState(false);
 
   const handleSubmit = e => {
     e.preventDefault();
@@ -16,8 +17,9 @@ const Login = () => {
     .then(res => {
       localStorage.setItem('token',res.data.payload);
       history.push('/bubbles')
+      setBadLogin(false);
     })
-    .catch(err => console.log(err));
+    .catch(err => setBadLogin(true));
   };
 
   const handleChange = e => {
@@ -41,6 +43,7 @@ const Login = () => {
         </label>
         <button onClick={handleSubmit}>Login</button>
       </form>
+      {badLogin && <p>Username or Password not valid.</p>}
     </div>
   );
 };
